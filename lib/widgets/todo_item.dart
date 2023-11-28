@@ -4,7 +4,11 @@ import 'package:flutter_todo/model/todo.dart';
 
 class ToDoItem extends StatelessWidget {
   final ToDo todo;
-  const ToDoItem({super.key, required this.todo});
+  final onToDoChanged;
+  final onDeleteItem;
+
+  const ToDoItem(
+      {super.key, required this.todo, this.onToDoChanged, this.onDeleteItem});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ class ToDoItem extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         onTap: () {
-          print("Clicled toitem");
+          onToDoChanged(todo);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         tileColor: Colors.white,
